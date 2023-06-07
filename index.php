@@ -59,34 +59,33 @@ $hotels = [
             <option value="default" selected>All</option>
             <option value="has_parking">Has Parking</option>
             <option value="no_parking"> No Parking</option>
+            <input type="number" name="vote">
         </select>
 
-        <input type="number" name="vote">
+        <button type="submit">invia</button>
+
     </form>
 
 
-    <?php if ($parking == 'default') {
-        // loop
+    <?php if ($_GET['parking'] == 'default') {
+        foreach ($hotels as $data) { ?>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <?php foreach ($data as $value) { ?>
+                            <td><?php echo $value ?></td>
+                        <?php } ?>
+                    </tr>
+                </tbody>
+            </table>
+
+    <?php }
     } ?>
 
 
 
-    <?php foreach ($hotels as $value) { ?>
 
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><?php echo $value['name'] ?></td>
-                    <td><?php echo $value['description'] ?></td>
-                    <td><?php echo $value['parking'] ?></td>
-                    <td><?php echo $value['vote'] ?></td>
-                    <td><?php echo $value['distance_to_center'] ?></td>
-                </tr>
-            </tbody>
-        </table>
-
-    <?php } ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
