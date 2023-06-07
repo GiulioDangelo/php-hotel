@@ -65,7 +65,7 @@ $hotels = [
     </form>
 
 
-    <?php if ($_GET['parking'] == 'default') {
+    <?php if ($parking == 'default') {
         // loop
     } ?>
 
