@@ -1,5 +1,4 @@
 <?php
-
 $hotels = [
 
     [
@@ -63,30 +62,35 @@ $hotels = [
         </select>
 
         <button type="submit">invia</button>
-
     </form>
 
-
-    <?php if ($_GET['parking'] == 'default') {
-        foreach ($hotels as $data) { ?>
-
-            <table class="table">
-                <tbody>
+    <table class="table">
+        <tbody>
+            <?php foreach ($hotels as $data) { ?>
+                <?php if ($_GET['parking'] == 'default') { ?>
                     <tr>
                         <?php foreach ($data as $value) { ?>
                             <td><?php echo $value ?></td>
                         <?php } ?>
                     </tr>
-                </tbody>
-            </table>
 
-    <?php }
-    } ?>
+                <?php } elseif ($_GET['parking'] == 'has_parking' && $data['parking'] && isset($_GET['vote']) && $_GET['vote'] == $data['vote']) { ?>
+                    <tr>
+                        <?php foreach ($data as $value) { ?>
+                            <td><?php echo $value ?></td>
+                        <?php } ?>
+                    </tr>
 
-
-
-
-
+                <?php } elseif ($_GET['parking'] == 'no_parking' && $data['parking'] == false && isset($_GET['vote']) && $_GET['vote'] == $data['vote']) {?>
+                    <tr>
+                        <?php foreach ($data as $value) { ?>
+                            <td><?php echo $value ?></td>
+                        <?php } ?>
+                    </tr>
+                    <?php } 
+                    } ?>
+        </tbody>
+    </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
