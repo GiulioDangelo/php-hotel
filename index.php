@@ -39,6 +39,15 @@ $hotels = [
 
 ];
 
+
+function convertBooleanToString($value)
+{
+    if (is_bool($value)) {
+        return $value ? 'si' : 'no';
+    }
+    return $value;
+}
+
 ?>
 
 <!doctype html>
@@ -70,21 +79,21 @@ $hotels = [
                 <?php if ($_GET['parking'] == 'default') { ?>
                     <tr>
                         <?php foreach ($data as $value) { ?>
-                            <td><?php echo $value ?></td>
+                            <td><?php echo convertBooleanToString($value) ?></td>
                         <?php } ?>
                     </tr>
 
                 <?php } elseif ($_GET['parking'] == 'has_parking' && $data['parking'] && isset($_GET['vote']) && $_GET['vote'] == $data['vote']) { ?>
                     <tr>
                         <?php foreach ($data as $value) { ?>
-                            <td><?php echo $value ?></td>
+                            <td><?php echo convertBooleanToString($value) ?></td>
                         <?php } ?>
                     </tr>
 
                 <?php } elseif ($_GET['parking'] == 'no_parking' && $data['parking'] == false && isset($_GET['vote']) && $_GET['vote'] == $data['vote']) {?>
                     <tr>
                         <?php foreach ($data as $value) { ?>
-                            <td><?php echo $value ?></td>
+                            <td><?php echo convertBooleanToString($value) ?></td>
                         <?php } ?>
                     </tr>
                     <?php } 
