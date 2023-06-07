@@ -54,11 +54,38 @@ $hotels = [
 
 <body>
 
+    <form action="">
+        <select name="parking" id="">
+            <option value="default" selected>All</option>
+            <option value="has_parking">Has Parking</option>
+            <option value="no_parking"> No Parking</option>
+        </select>
+
+        <input type="number" name="vote">
+    </form>
+
+
+    <?php if ($_GET['parking'] == 'default') {
+        // loop
+    } ?>
+
+
+
     <?php foreach ($hotels as $value) { ?>
 
-        <?php foreach ($value as $data) { ?>
-            <p><?= $data ?></p>
-        <?php } ?>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><?php echo $value['name'] ?></td>
+                    <td><?php echo $value['description'] ?></td>
+                    <td><?php echo $value['parking'] ?></td>
+                    <td><?php echo $value['vote'] ?></td>
+                    <td><?php echo $value['distance_to_center'] ?></td>
+                </tr>
+            </tbody>
+        </table>
+
     <?php } ?>
 
 
